@@ -1,0 +1,19 @@
+<launch>
+	<rosparam file="$(find sentry233333)/config/sentry_controller.yaml" command="load" />
+
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/sentry"
+		args="joint_state_controller
+	front_left_controller
+	front_right_controller
+	behind_left_controller
+	behind_right_controller" />
+
+	<node
+		name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+		respawn="false" output="screen">
+		<param name="publish_frequency" type="double" value="30.0" />
+		<remap from="/joint_states" to="/sentry/joint_states" />
+	</node>
+
+</launch>

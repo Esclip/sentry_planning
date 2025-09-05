@@ -1,0 +1,26 @@
+<launch>
+
+	<arg name="model" default="$(find mbot_description)/urdf/xacro/mbot.xacro" />
+	<!-- 设置GUI参数，显示关节控制插件 -->
+	<arg name="use_gui" default="false" />
+
+	<!-- inorder 选项在Jade版本之后可以使用，且为默认处理方式，可以不写，见 https://wiki.ros.org/xacro-->
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+	<node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+		<rosparam file="$(find mbot_description)/config/fake_mbot_arbotix.yaml" command="load" />
+		<param name="sim" value="true"/>
+	</node>
+
+	<!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+	<node if="$(arg use_gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+	<node unless="$(arg use_gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+	<!-- 运行robot_state_publisher节点，发布tf  -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+	<!-- 运行rviz可视化界面 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find mbot_description)/config/rviz/mbot_arbotix.rviz" required="true" />
+
+</launch>
+

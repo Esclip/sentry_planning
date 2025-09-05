@@ -1,0 +1,39 @@
+<launch>
+
+    <arg name="world_file" default="$(find mbot_gazebo)/worlds/rmuc_mbot_lidar.world" />
+    <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(arg world_file)">
+        <param name="world_name" value="$(arg world_file)" />
+    </node>
+
+    <!-- 加载控制器 -->
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find mbot_control)/config/mbot_control.yaml" command="load" />
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/mbot"
+        args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller" />
+
+
+    <!-- 加载机器人模型描述参数 -->
+    <param name="robot_description"
+        command="$(find xacro)/xacro --inorder '$(find mbot_description)/urdf/xacro/gazebo/mbot_velodyne.xacro'" />
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher_gui"
+        type="joint_state_publisher_gui"></node>
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        output="screen">
+        <param name="publish_frequency" type="double" value="50.0" />
+        <remap from="/joint_states" to="/mbot/joint_states" />
+    </node>
+
+    <node name="mbot_teleop" pkg="mbot_teleop" type="mbot_teleop.py" output="screen">
+        <param name="scale_linear" value="0.1" type="double" />
+        <param name="scale_angular" value="0.4" type="double" />
+    </node>
+
+
+</launch>

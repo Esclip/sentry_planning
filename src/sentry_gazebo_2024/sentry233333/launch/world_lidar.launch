@@ -1,0 +1,43 @@
+<launch>
+
+    <arg name="world_file" default="$(find sentry233333)/world/rmuc.world" />
+    <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(arg world_file)">
+        <param name="world_name" value="$(arg world_file)" />
+    </node>
+
+
+    <node
+        name="tf_footprint_base"
+        pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+
+    <!--加载机器人模型参数-->
+    <arg name="model"
+        default="$(find xacro)/xacro --inorder '$(find sentry233333)/urdf/xacro/sentry_lidar.xacro'" />
+    <param name="robot_description" command="$(arg model)" />
+
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher_gui"
+        type="joint_state_publisher_gui" />
+
+
+    <!-- 发布点云数据 -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="30.0" />
+    </node>
+
+    <!-- RViz -->
+    <arg name="rviz" default="true" />
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false"
+        output="screen" args="-d $(find sentry233333)/config/lidar.rviz" />
+
+
+    <node
+        name="fake_joint_calibration"
+        pkg="rostopic"
+        type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+</launch>

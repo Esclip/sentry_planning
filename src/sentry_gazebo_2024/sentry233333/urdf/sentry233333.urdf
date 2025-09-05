@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="sentry233333">
+  <link
+  
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="25.541" />
+      <inertia
+        ixx="0.91899"
+        ixy="5.9401E-05"
+        ixz="-0.010701"
+        iyy="0.75967"
+        iyz="-4.2596E-05"
+        izz="0.78912" />
+    </inertial>
+    
+    
+    
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    
+    
+    
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  <link
+    name="wheel_leftfront_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.227" />
+      <inertia
+        ixx="0.00060036"
+        ixy="-1.3779E-20"
+        ixz="1.6094E-20"
+        iyy="0.0011314"
+        iyz="-5.6497E-18"
+        izz="0.00060036" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_leftfront_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_leftfront_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  
+  
+  <joint
+    name="wheel_leftfront_joint"
+    type="continuous">
+    <origin
+      xyz="0.19004 0.19248 -0.096213"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_leftfront_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_leftback_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.227" />
+      <inertia
+        ixx="0.00060036"
+        ixy="-1.2707E-20"
+        ixz="-1.3553E-20"
+        iyy="0.0011314"
+        iyz="-5.6397E-18"
+        izz="0.00060036" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_leftback_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_leftback_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_leftback_joint"
+    type="continuous">
+    <origin
+      xyz="-0.19496 0.19248 -0.096213"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_leftback_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_rightback_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.227" />
+      <inertia
+        ixx="0.00060036"
+        ixy="-1.8789E-20"
+        ixz="6.1833E-20"
+        iyy="0.0011314"
+        iyz="-5.6377E-18"
+        izz="0.00060036" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_rightback_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_rightback_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_rightback_joint"
+    type="continuous">
+    <origin
+      xyz="-0.19496 -0.19252 -0.096213"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_rightback_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_rightfront_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.227" />
+      <inertia
+        ixx="0.00060036"
+        ixy="-6.7763E-21"
+        ixz="-4.2414E-51"
+        iyy="0.0011314"
+        iyz="-9.3706E-37"
+        izz="0.00060036" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_rightfront_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry233333/meshes/wheel_rightfront_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_rightfront_joint"
+    type="continuous">
+    <origin
+      xyz="0.19004 -0.19252 -0.096213"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_rightfront_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  
+  
+</robot>

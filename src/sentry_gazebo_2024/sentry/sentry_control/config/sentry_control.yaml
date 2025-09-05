@@ -1,0 +1,49 @@
+sentry:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # Position Controllers ---------------------------------------
+  spin_rightback_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: spin_rightback_joint
+    pid: {p: 10, i: 0, d: 0.1}
+#    pid: {p: 100.0, i: 0.01, d: 10.0}
+  spin_leftback_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: spin_leftback_joint
+    pid: { p: 10, i: 0, d: 0.1}
+  #    pid: {p: 100.0, i: 0.01, d: 10.0}
+  spin_rightfront_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: spin_rightfront_joint
+    pid: { p: 10, i: 0, d: 0.1}
+#    pid: {p: 100.0, i: 0.01, d: 10.0}
+  spin_leftfront_joint_controller:
+    type: effort_controllers/JointPositionController
+    joint: spin_leftfront_joint
+    pid: { p: 2.0, i: 0, d: 0 }
+#    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  # Speed Controllers ---------------------------------------
+  wheel_rightback_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_rightback_joint
+    pid: { p: 1.0, i: 0, d: 0 }
+#    pid: { p: 100.0, i: 0.01, d: 10.0 }
+  wheel_leftback_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_leftback_joint
+    pid: { p: 1.0, i: 0, d: 0 }
+#    pid: { p: 100.0, i: 0.01, d: 10.0 }
+  wheel_rightfront_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_rightfront_joint
+    pid: { p: 1.0, i: 0, d: 0 }
+#    pid: { p: 100.0, i: 0.01, d: 10.0 }
+  wheel_leftfront_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_leftfront_joint
+    pid: { p: 1.0, i: 0, d: 0 }
+#    pid: { p: 100.0, i: 0.01, d: 10.0 }

@@ -1,0 +1,23 @@
+<launch>
+
+    <arg name="model" default="$(find mbot_description)/urdf/xacro/gazebo/mbot_velodyne.xacro" />
+    <arg name="world_file" default="$(find mbot_gazebo)/worlds/rmuc_std_mbot_HDL32_2.world" />
+    <!-- <arg name="world_file" default="$(find mbot_gazebo)/worlds/rmuc_mbot_VLP16.world" /> -->
+
+    <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(arg world_file)" required="true">
+        <param name="world_name" value="$(arg world_file)" />
+    </node>
+
+    <!-- 加载机器人模型描述参数 -->
+    <param name="mbot/robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ns="mbot" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns="mbot">
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+
+</launch>

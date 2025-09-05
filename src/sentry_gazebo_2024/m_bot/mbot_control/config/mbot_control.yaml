@@ -1,0 +1,79 @@
+mbot:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # Speed Controllers ---------------------------------------
+  left_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+  right_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+
+mbot2:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # Speed Controllers ---------------------------------------
+  left_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+  right_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+
+mbot3:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # Speed Controllers ---------------------------------------
+  left_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+  right_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+
+mbot4:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # Speed Controllers ---------------------------------------
+  left_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+  right_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+
+mbot5:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1000
+
+  # Speed Controllers ---------------------------------------
+  left_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}
+  right_wheel_joint_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel_joint
+    pid: {p: 0.0, i: 0.01, d: 1.0}

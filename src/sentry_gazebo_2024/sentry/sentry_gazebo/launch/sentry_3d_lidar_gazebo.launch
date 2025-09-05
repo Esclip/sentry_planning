@@ -1,0 +1,30 @@
+<launch>
+
+    <!-- <arg name="world_file" default="$(find RMchangdi1230)/world/rmuc.world" /> -->
+    <arg name="world_file" default="$(find mbot_gazebo)/worlds/playground.world" />
+    <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(arg world_file)">
+        <param name="world_name" value="$(arg world_file)" />
+    </node>
+
+
+    <!-- 加载机器人模型描述参数 -->
+    <!--    <param name="robot_description" textfile="$(find sentry_model)/urdf/sentry_model.urdf"
+    />-->
+    <param name="robot_description" textfile="$(find sentrymodel_1225)/urdf/sentrymodel_1225.urdf" />
+
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher_gui"
+        type="joint_state_publisher_gui"></node>
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        output="screen">
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+    <!-- 在gazebo中加载机器人模型 -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+        respawn="false" output="screen"
+        args="-urdf -model mrobot -param robot_description" />
+
+</launch>

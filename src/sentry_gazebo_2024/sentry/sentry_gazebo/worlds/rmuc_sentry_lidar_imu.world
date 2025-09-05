@@ -1,0 +1,806 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.0334</max_step_size>
+      <real_time_factor>30</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='RMchangdi1230'>
+      <link name='base_link'>
+        <inertial>
+          <pose>13.983 7.4613 0.043771 0 -0 0</pose>
+          <mass>242650</mass>
+          <inertia>
+            <ixx>3.1217e+06</ixx>
+            <ixy>-46298</ixy>
+            <ixz>-933.17</ixz>
+            <iyy>9.8875e+06</iyy>
+            <iyz>-167.04</iyz>
+            <izz>1.3e+07</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../RMchangdi1230/world/../../RMchangdi1230/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../RMchangdi1230/world/../../RMchangdi1230/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>265 708000000</sim_time>
+      <real_time>102 377565219</real_time>
+      <wall_time>1672414173 845880423</wall_time>
+      <iterations>2991</iterations>
+      <model name='RMchangdi1230'>
+        <pose>-13.9919 -7.4843 0.299999 0 -0 0.000853</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>-13.9919 -7.4843 0.299999 0 -0 0.000853</pose>
+          <velocity>-2e-06 2e-06 -2.6e-05 -8e-06 -7e-06 0</velocity>
+          <acceleration>-0.005066 0.005273 0.025764 -0.015366 -0.014747 0</acceleration>
+          <wrench>-1229.38 1279.52 6251.59 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='mrobot'>
+        <pose>-1.12291 -1.24607 0.674195 3.6e-05 -3.2e-05 -0.774501</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose>-1.12291 -1.24607 0.674195 3.6e-05 -3.2e-05 -0.774501</pose>
+          <velocity>0.001942 -0.001726 0.005507 0.008405 -0.016494 0.002449</velocity>
+          <acceleration>-0.779493 -0.28478 11.0186 1.37878 0.370078 -1.29707</acceleration>
+          <wrench>-11.061 -4.04103 156.354 0 -0 0</wrench>
+        </link>
+        <link name='spin_leftback_link'>
+          <pose>-1.12587 -0.973854 0.578697 5.9e-05 -1.9e-05 -0.035965</pose>
+          <velocity>0.002328 -0.002173 0.008059 0.016611 -0.011278 -0.008692</velocity>
+          <acceleration>0.727473 1.46256 15.7273 -0.272475 0.798966 -1.07796</acceleration>
+          <wrench>0.415416 0.835179 8.9809 0 -0 0</wrench>
+        </link>
+        <link name='spin_leftfront_link'>
+          <pose>-0.850679 -1.2431 0.578708 1.5e-05 4.9e-05 -3.08006</pose>
+          <velocity>0.003993 -0.001046 0.010027 0.011206 -0.015712 0.010945</velocity>
+          <acceleration>5.33694 2.77587 20.0138 2.54187 -1.17596 2.46255</acceleration>
+          <wrench>3.04462 1.58358 11.4175 0 -0 0</wrench>
+        </link>
+        <link name='spin_rightback_link'>
+          <pose>-1.39512 -1.24904 0.578681 -3.5e-05 4.6e-05 2.11159</pose>
+          <velocity>0.002098 -0.002254 0.000627 -0.007346 -0.008469 -0.18853</velocity>
+          <acceleration>1.29801 -3.01864 0.732657 1.1431 -0.290095 1.4124</acceleration>
+          <wrench>0.740486 -1.72207 0.417966 0 -0 0</wrench>
+        </link>
+        <link name='spin_rightfront_link'>
+          <pose>-1.11994 -1.51828 0.578698 -9.7e-05 8e-06 1.31257</pose>
+          <velocity>-0.000877 0.001177 0.004195 0.000398 -0.03603 -0.014516</velocity>
+          <acceleration>3.04846 4.41373 7.62573 -0.889302 -0.253689 1.7305</acceleration>
+          <wrench>1.73909 2.51794 4.35033 0 -0 0</wrench>
+        </link>
+        <link name='wheel_leftback_link'>
+          <pose>-1.12613 -0.973841 0.459993 2.4e-05 0.160293 -0.035956</pose>
+          <velocity>0.003855 -0.000804 0.009258 0.011639 0.055393 -0.007149</velocity>
+          <acceleration>2.15258 1.61472 18.2581 1.36974 1.57014 -1.53848</acceleration>
+          <wrench>0.488764 0.36664 4.14569 0 -0 0</wrench>
+        </link>
+        <link name='wheel_leftfront_link'>
+          <pose>-0.850405 -1.24309 0.459999 3.14158 0.513174 0.061513</pose>
+          <velocity>0.005916 -0.000229 0.009931 0.003254 0.084885 0.008194</velocity>
+          <acceleration>6.87309 2.9198 20.1314 2.26129 -0.984178 -1.62612</acceleration>
+          <wrench>1.5606 0.66297 4.57104 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rightback_link'>
+          <pose>-1.39525 -1.24881 0.45997 -3.14155 0.245928 -1.03</pose>
+          <velocity>0.00309 -0.002958 0.000234 0.012454 0.019464 -0.19027</velocity>
+          <acceleration>2.39408 -3.18888 0.232266 -1.95269 0.703253 -2.33665</acceleration>
+          <wrench>0.543599 -0.724068 0.052738 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rightfront_link'>
+          <pose>-1.11987 -1.51803 0.459999 5.5e-05 0.323368 1.31261</pose>
+          <velocity>0.002662 0.001464 0.006175 -0.021167 0.038143 -0.002688</velocity>
+          <acceleration>4.50588 4.82845 11.8807 -2.85438 0.846227 0.157326</acceleration>
+          <wrench>1.0231 1.09635 2.69763 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>1.33345 -12.1859 8.32519 -0 0.467643 1.6922</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='mrobot'>
+      <link name='base_link'>
+        <inertial>
+          <pose>0.007574 0.008525 -0.017556 0 -0 0</pose>
+          <mass>14.19</mass>
+          <inertia>
+            <ixx>0.023492</ixx>
+            <ixy>-8.354e-05</ixy>
+            <ixz>9.0922e-05</ixz>
+            <iyy>0.023806</iyy>
+            <iyz>5.8644e-05</iyz>
+            <izz>0.03774</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='spin_leftback_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.1925 0.1925 -0.0955 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>spin_leftback_link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='spin_leftback_link'>
+        <pose relative_to='spin_leftback_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.004775 -0.002492 -0.078005 0 -0 0</pose>
+          <mass>0.57104</mass>
+          <inertia>
+            <ixx>0.00018858</ixx>
+            <ixy>5.7137e-08</ixy>
+            <ixz>4.7768e-05</ixz>
+            <iyy>0.00033365</iyy>
+            <iyz>-1.4713e-07</iyz>
+            <izz>0.00028132</izz>
+          </inertia>
+        </inertial>
+        <collision name='spin_leftback_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_leftback_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='spin_leftback_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_leftback_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_leftback_joint' type='revolute'>
+        <pose relative_to='spin_leftback_link'>-0.000268 0 -0.11871 0 -0 0</pose>
+        <parent>spin_leftback_link</parent>
+        <child>wheel_leftback_link</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_leftback_link'>
+        <pose relative_to='wheel_leftback_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0.004083 -0 0 -0 0</pose>
+          <mass>0.22706</mass>
+          <inertia>
+            <ixx>0.00043392</ixx>
+            <ixy>-9.1871e-20</ixy>
+            <ixz>-1.1463e-19</ixz>
+            <iyy>0.00083033</iyy>
+            <iyz>-2.7974e-18</iyz>
+            <izz>0.00043392</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_leftback_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_leftback_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_leftback_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_leftback_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='spin_leftfront_joint' type='revolute'>
+        <pose relative_to='base_link'>0.1925 0.1925 -0.0955 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>spin_leftfront_link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='spin_leftfront_link'>
+        <pose relative_to='spin_leftfront_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.004878 -0.002461 -0.078016 0 -0 0</pose>
+          <mass>0.57048</mass>
+          <inertia>
+            <ixx>0.00018939</ixx>
+            <ixy>-4.5845e-08</ixy>
+            <ixz>4.7831e-05</ixz>
+            <iyy>0.00033364</iyy>
+            <iyz>-5.175e-08</iyz>
+            <izz>0.00028049</izz>
+          </inertia>
+        </inertial>
+        <collision name='spin_leftfront_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_leftfront_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='spin_leftfront_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_leftfront_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_leftfront_joint' type='revolute'>
+        <pose relative_to='spin_leftfront_link'>-0.000268 0 -0.11871 0 -0 0</pose>
+        <parent>spin_leftfront_link</parent>
+        <child>wheel_leftfront_link</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_leftfront_link'>
+        <pose relative_to='wheel_leftfront_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 0.004083 -0 0 -0 0</pose>
+          <mass>0.22706</mass>
+          <inertia>
+            <ixx>0.00043392</ixx>
+            <ixy>-1.8325e-19</ixy>
+            <ixz>1.6248e-19</ixz>
+            <iyy>0.00083033</iyy>
+            <iyz>-3.0406e-18</iyz>
+            <izz>0.00043392</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_leftfront_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_leftfront_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_leftfront_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_leftfront_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='spin_rightback_joint' type='revolute'>
+        <pose relative_to='base_link'>-0.1925 -0.1925 -0.0955 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>spin_rightback_link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='spin_rightback_link'>
+        <pose relative_to='spin_rightback_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.004878 0.002461 -0.078016 0 -0 0</pose>
+          <mass>0.57048</mass>
+          <inertia>
+            <ixx>0.00018939</ixx>
+            <ixy>-4.5845e-08</ixy>
+            <ixz>-4.7831e-05</ixz>
+            <iyy>0.00033364</iyy>
+            <iyz>5.175e-08</iyz>
+            <izz>0.00028049</izz>
+          </inertia>
+        </inertial>
+        <collision name='spin_rightback_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_rightback_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='spin_rightback_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_rightback_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rightback_joint' type='revolute'>
+        <pose relative_to='spin_rightback_link'>0.000268 0 -0.11871 0 -0 0</pose>
+        <parent>spin_rightback_link</parent>
+        <child>wheel_rightback_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rightback_link'>
+        <pose relative_to='wheel_rightback_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0.004083 -0 0 -0 0</pose>
+          <mass>0.22706</mass>
+          <inertia>
+            <ixx>0.00043392</ixx>
+            <ixy>-1.5734e-19</ixy>
+            <ixz>7.8006e-20</ixz>
+            <iyy>0.00083033</iyy>
+            <iyz>-2.3855e-18</iyz>
+            <izz>0.00043392</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rightback_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_rightback_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_rightback_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_rightback_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='spin_rightfront_joint' type='revolute'>
+        <pose relative_to='base_link'>0.1925 -0.1925 -0.0955 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>spin_rightfront_link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='spin_rightfront_link'>
+        <pose relative_to='spin_rightfront_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.004775 0.002492 -0.078005 0 -0 0</pose>
+          <mass>0.57048</mass>
+          <inertia>
+            <ixx>0.00018858</ixx>
+            <ixy>5.7137e-08</ixy>
+            <ixz>-4.7768e-05</ixz>
+            <iyy>0.00033365</iyy>
+            <iyz>1.4713e-07</iyz>
+            <izz>0.00028132</izz>
+          </inertia>
+        </inertial>
+        <collision name='spin_rightfront_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_rightfront_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='spin_rightfront_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/spin_rightfront_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wheel_rightfront_joint' type='revolute'>
+        <pose relative_to='spin_rightfront_link'>0.000268 0 -0.11871 0 -0 0</pose>
+        <parent>spin_rightfront_link</parent>
+        <child>wheel_rightfront_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='wheel_rightfront_link'>
+        <pose relative_to='wheel_rightfront_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0.004083 -0 0 -0 0</pose>
+          <mass>0.22706</mass>
+          <inertia>
+            <ixx>0.00043392</ixx>
+            <ixy>-1.6546e-19</ixy>
+            <ixz>1.1855e-19</ixz>
+            <iyy>0.00083033</iyy>
+            <iyz>3.8023e-20</iyz>
+            <izz>0.00043392</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rightfront_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_rightfront_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_rightfront_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>../../../sentry/sentrymodel_1225/meshes/wheel_rightfront_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>

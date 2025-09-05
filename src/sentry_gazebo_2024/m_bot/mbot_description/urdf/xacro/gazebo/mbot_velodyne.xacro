@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find mbot_description)/urdf/xacro/gazebo/mbot_base_gazebo.xacro" />
+
+    <xacro:property name="lidar_offset_x" value="0" />
+    <xacro:property name="lidar_offset_y" value="0" />
+    <xacro:property name="lidar_offset_z" value="0.080" />
+
+    <xacro:mbot_base_gazebo color_car="Blue"/>
+
+    <!-- lidar VLP-16 -->
+    <!-- <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" />
+    <xacro:VLP-16 parent="base_link">
+        <origin xyz="${lidar_offset_x} ${lidar_offset_y}
+    ${lidar_offset_z}" rpy="0 0 0" />
+    </xacro:VLP-16> -->
+
+    <!-- lidar HDL-32 -->
+    <xacro:include filename="$(find velodyne_description)/urdf/HDL-32E.urdf.xacro" />
+    <xacro:HDL-32E parent="base_link">
+        <origin xyz="${lidar_offset_x} ${lidar_offset_y} ${lidar_offset_z}" rpy="0 0 0" />
+    </xacro:HDL-32E>
+
+    <!-- IMU -->
+    <xacro:include filename="$(find mbot_description)/sensors/imu.xacro" />
+    <xacro:imu sensor_name="imu" parent_link="base_link">
+        <origin rpy="0 0 0" xyz="${lidar_offset_x} ${lidar_offset_y} ${lidar_offset_z+0.17}" />
+    </xacro:imu>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        </plugin>
+    </gazebo>
+
+</robot>

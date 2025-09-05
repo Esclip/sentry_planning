@@ -1,0 +1,90 @@
+<launch>
+
+    <arg name="model" default="$(find mbot_description)/urdf/xacro/gazebo/mbot_velodyne.xacro" />
+<!--     <arrg name="model2" default="$(find mbot_description)/urdf/xacro/gazebo/mbot_velodyne.xacro" /> -->
+    <arg name="model2" default="$(find mbot_description)/urdf/xacro/gazebo/mbot_velodyne_target.xacro" />
+    <arg name="world_file" default="$(find RMchangdi1230)/world/rmuc_static.world" />
+    <!-- <arg name="world_file" default="$(find mbot_gazebo)/worlds/playground.world" /> -->
+
+    <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(arg world_file)" required="true">
+        <param name="world_name" value="$(arg world_file)" />
+    </node>
+
+
+<group ns="mbot">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="100.0" />
+    </node>
+
+    <node name="mbot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-x 5.0 -y 8.0 -z 0.1 -urdf -model mbot -param robot_description" />
+
+</group>
+
+<group ns="mbot2">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="100.0" />
+    </node>
+
+    <node name="mbot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-x 15.0 -y 8.0 -z 0.1 -urdf -model mbot2 -param robot_description" />
+
+</group>
+
+<group ns="mbot3">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="100.0" />
+    </node>
+
+    <node name="mbot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-x 15.0 -y 10.0 -z 0.1 -urdf -model mbot3 -param robot_description" />
+
+</group>
+
+<group ns="mbot4">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="100.0" />
+    </node>
+
+    <node name="mbot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-x 5.0 -y 12.0 -z 1.1 -urdf -model mbot4 -param robot_description" />
+
+</group>
+
+<group ns="mbot5">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model2)" />
+    <!-- 运行joint_state_publisher节点，发布机器人的关节状态  -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+    <!-- 运行robot_state_publisher节点，发布tf  -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="100.0" />
+    </node>
+
+    <node name="mbot_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-x 5.0 -y 6.0 -z 0.1 -urdf -model mbot5 -param robot_description" />
+
+</group>
+
+
+</launch>

@@ -1,0 +1,24 @@
+sentry:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Velocity Controllers ---------------------------------------
+  front_left_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_leftfront_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  front_right_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_rightfront_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  behind_left_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_leftback_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  behind_right_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_rightback_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+

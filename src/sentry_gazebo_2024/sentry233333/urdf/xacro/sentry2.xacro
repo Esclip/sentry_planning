@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sentry" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- property list-->
+  <xacro:property name="wheel_diameter" value="0.14" />
+  <xacro:property name="wheel_separation" value="0.385" />
+  <xacro:property name="wheel_mass" value="0.227" />
+
+  <!-- left-x front-y up-z -->
+  <xacro:property name="wheel_bias_x" value="0.19004" />
+  <xacro:property name="wheel_bias_y" value="0.19248" />
+  <xacro:property name="wheel_bias_z" value="-0.096213" />
+
+
+  <!-- color -->
+  <material name="yellow">
+    <color rgba="1 0.4 0 1" />
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 0.95" />
+  </material>
+  <material name="gray">
+    <color rgba="0.75 0.75 0.75 1" />
+  </material>
+
+
+  <xacro:macro name="wheel" params="which_wheel bias_x bias_y bias_z">
+    <!-- link -->
+    <link name="wheel_${which_wheel}_link">
+      <inertial>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <mass
+          value="0.227" />
+        <inertia
+          ixx="0.00060036"
+          ixy="-1.3779E-20"
+          ixz="1.6094E-20"
+          iyy="0.0011314"
+          iyz="-5.6497E-18"
+          izz="0.00060036" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://sentry233333/meshes/wheel_${which_wheel}_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://sentry233333/meshes/wheel_${which_wheel}_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <!-- joint -->
+    <joint
+      name="wheel_${which_wheel}_joint"
+      type="continuous">
+      <origin
+        xyz="${bias_x} ${bias_y} ${bias_z}"
+        rpy="0 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="wheel_${which_wheel}_link" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+    <!-- others -->
+    <gazebo reference="wheel_${which_wheel}_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="wheel_${which_wheel}_link">
+      <mu1>10000000</mu1>
+      <mu2>10000000</mu2>
+      <kp>10000000</kp>
+      <kd>1</kd>
+    </gazebo>
+    <!-- transmission -->
+    <transmission name="wheel_${which_wheel}_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="wheel_${which_wheel}_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="wheel_${which_wheel}_joint_controller">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <!-- end -->
+  </xacro:macro>
+
+  <xacro:macro name="sentry_simple" params="name:=sentry_simple">
+
+    <link name="base_link">
+      <inertial>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <mass
+          value="25.541" />
+        <inertia
+          ixx="0.91899"
+          ixy="5.9401E-05"
+          ixz="-0.010701"
+          iyy="0.75967"
+          iyz="-4.2596E-05"
+          izz="0.78912" />
+      </inertial>
+
+
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://sentry233333/meshes/base_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="1 1 1 1" />
+        </material>
+      </visual>
+
+
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://sentry233333/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+
+
+    <xacro:wheel which_wheel="leftfront" bias_x="${wheel_bias_x}" bias_y="${wheel_bias_y}"
+      bias_z="${wheel_bias_z}" />
+    <xacro:wheel which_wheel="leftback" bias_x="${wheel_bias_x}" bias_y="${-wheel_bias_y}"
+      bias_z="${wheel_bias_z}" />
+    <xacro:wheel which_wheel="rightfront" bias_x="${-wheel_bias_x}" bias_y="${wheel_bias_y}"
+      bias_z="${wheel_bias_z}" />
+    <xacro:wheel which_wheel="rightback" bias_x="${-wheel_bias_x}" bias_y="${-wheel_bias_y}"
+      bias_z="${wheel_bias_z}" />
+
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+    <gazebo reference="base_link">
+      <material>Gazebo/Gray</material>
+    </gazebo>
+
+
+    <!-- <gazebo>
+    <plugin name="differential_drive_controller"
+    filename="libgazebo_ros_diff_drive.so">
+      <rosDebugLevel>Debug</rosDebugLevel>
+    <publishWheelTF>true</publishWheelTF>
+      <robotNamespace>/sentry</robotNamespace>
+    <publishTf>1</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+    <alwaysOn>true</alwaysOn>
+      <updateRate>100.0</updateRate>
+      <legacyMode>true</legacyMode>
+    <leftJoint>wheel_leftfront_joint</leftJoint>
+      <rightJoint>wheel_rightfront_joint</rightJoint>
+    <wheelSeparation>${wheel_separation}</wheelSeparation>
+    <wheelDiameter>${wheel_diameter}</wheelDiameter>
+      <broadcastTF>1</broadcastTF>
+    <wheelTorque>30</wheelTorque>
+      <wheelAcceleration>1.8</wheelAcceleration>
+    <commandTopic>cmd_vel</commandTopic>
+      <odometryFrame>odom</odometryFrame>
+    <odometryTopic>odom</odometryTopic>
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+    </gazebo> -->
+    <gazebo>
+      <plugin name="skid_steer_drive_controller"
+        filename="libgazebo_ros_skid_steer_drive.so">
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <publishWheelTF>true</publishWheelTF>
+        <robotNamespace>/</robotNamespace>
+        <publishTf>1</publishTf>
+        <publishWheelJointState>true</publishWheelJointState>
+        <updateRate>100.0</updateRate>
+        <leftFrontJoint>wheel_leftfront_joint</leftFrontJoint>
+        <leftRearJoint>wheel_leftback_joint</leftRearJoint>
+        <rightFrontJoint>wheel_rightfront_joint</rightFrontJoint>
+        <rightRearJoint>wheel_rightback_joint</rightRearJoint>
+        <wheelSeparation>${wheel_separation}</wheelSeparation>
+        <wheelDiameter>${wheel_diameter}</wheelDiameter>
+        <broadcastTF>1</broadcastTF>
+        <torque>100</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryTopic>odom</odometryTopic>
+        <robotBaseFrame>base_link</robotBaseFrame>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+</robot>

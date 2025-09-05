@@ -1,0 +1,33 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find mbot_control)/config/mbot_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+<group ns="mbot">
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller"/>
+</group>
+
+<group ns="mbot2">
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller"/>
+</group>
+
+<group ns="mbot3">
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller"/>
+</group>
+
+<group ns="mbot4">
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller"/>
+</group>
+
+<group ns="mbot5">
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="left_wheel_joint_controller right_wheel_joint_controller joint_state_controller"/>
+</group>
+
+<!--   <node pkg="mbot_control" name="mbot_controller" type="mbot_controller" required = "true"/> -->
+</launch>
