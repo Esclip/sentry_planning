@@ -17,7 +17,7 @@
 #include <visualization_msgs/Marker.h>
 #include <gazebo_msgs/ModelStates.h>
 #include <std_msgs/Int64.h>
-#include "slaver/slaver_speed.h"
+#include <sentry_msgs/slaver_speed.h>
 #include <sentry_msgs/RobotsHP.h>
 #include <sentry_msgs/RobotStatus.h>
 

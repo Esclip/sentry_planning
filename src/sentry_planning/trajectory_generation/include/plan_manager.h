@@ -16,7 +16,6 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <visualization_msgs/Marker.h>
 #include <gazebo_msgs/ModelStates.h>
-#include <sentry_msgs/GoTarget.h>
 #include <std_msgs/Int64.h>
 
 #include <cmath>
